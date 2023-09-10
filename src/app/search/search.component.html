@@ -1,0 +1,22 @@
+<form>
+    <mat-form-field style="width: 100%;">
+        <input matInput [matAutocomplete]="auto" [formControl]="formscontol" placeholder="Search">
+    </mat-form-field>
+    <mat-autocomplete #auto>
+
+        <mat-option *ngFor="let e of filteroptions | async" [value]="e" style="text-align: center;">
+            <a [routerLink]='["/main/others",e.id]' style="text-decoration: none;">
+               <div class="" style="display: flex;">
+                <img  src="https://material.angular.io/assets/img/examples/shiba2.jpg" class="rounded a" align="left">
+                <div class="" class="a">
+                <b  style="margin-left: 14px;margin-top: 12px;">{{e.name}}</b>
+                <br>
+                <p  style="margin-left: 14px">{{e.userName}}</p>
+                </div>
+               </div>
+            </a>
+               
+        </mat-option>
+     
+    </mat-autocomplete>
+</form>

@@ -1,0 +1,54 @@
+<div class="" style="justify-items: center; ;margin-left: 190px;margin-top: 20px;display: flex;" >
+          <div class="" style="margin: 50px;">
+            <img  src="https://material.angular.io/assets/img/examples/shiba2.jpg" class="rounded a" align="left">
+          </div>
+          <div class="" style="margin: 50px;">
+                 <div class="inside">
+                <span style="font-size: 20px;">{{posts[0].user.userName}}</span>
+               
+                <span><button mat-raised-button color="black" style="height: 25px;">Edit profile</button></span>
+                <span ><button mat-button style="size: 30px;"><mat-icon>settings</mat-icon></button></span>
+            </div>
+            <div class="inside" style="margin-top: 30px;">
+                <span><b>20</b> posts </span>
+                <span class="ab"><b>{{posts[0].user.followers}}</b> followers</span>
+                <span class="ab"><b>{{posts[0].user.following}}</b> following</span>
+            </div>
+            <div class="" style="margin-top: 20px;margin-left: 5px;">
+                <h5><b>{{posts[0].user.name}}</b></h5>
+                <p>Art | Music | Dance</p>
+                <p>Surya fan</p>
+            </div>
+          </div>
+          <br>
+    </div>
+    <div class="" style="width: 700px;text-align: center;justify-items: center;padding: auto;margin-left: 260px;">
+     
+        <mat-tab-group animationDuration="0ms">
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon>apps</mat-icon>Posts
+                  </ng-template>
+                  <mat-card >
+                    <mat-card-content ><mat-grid-list cols="3" [gutterSize]="'20px'" >
+                        <mat-grid-tile *ngFor="let p of posts" >
+                         
+                            <img  [src]="p.files[0].url" alt="Photo of a Shiba Inu" style="width: 300px;height: 220px;cursor: pointer;" (click)="openPost(p.files[0].url,p.caption,p.likes,p.comment,p.postedTime)">
+                    
+                        </mat-grid-tile>
+                      </mat-grid-list></mat-card-content>
+                  </mat-card>
+            </mat-tab>
+            <mat-tab> 
+                <ng-template mat-tab-label>
+                    <mat-icon>bookmark_border</mat-icon>Saved
+                  </ng-template>
+            </mat-tab>
+            <mat-tab >
+                <ng-template mat-tab-label>
+                    <mat-icon>person_outline</mat-icon>Tagged
+                  </ng-template>
+            </mat-tab>
+          </mat-tab-group>
+      </div>
+    

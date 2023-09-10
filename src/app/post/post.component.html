@@ -1,0 +1,20 @@
+<mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile>
+        <img  [src]="data.url" alt="Photo of a Shiba Inu" style="width:400px;height: 100%">
+     </mat-grid-tile>
+     <mat-grid-tile >
+        <mat-card style="width: 100%;height: 150px;margin-top: 250px;">
+        <mat-card-actions style="padding: 0px;">
+            <button mat-button><span class="material-icons"> favorite_border </span></button>
+            <button mat-button><mat-icon>comment</mat-icon></button>
+            <button mat-button><mat-icon>share</mat-icon></button>
+          </mat-card-actions>
+          <p style="padding-left: 15px;"><b>120 likes</b></p>
+          <p style="padding-left: 15px;color: darkgray;">{{date}}</p>
+         <input matInput type="text" placeholder="Add a comment" style="border: none;display: inline;padding-left:15px ;">
+        </mat-card>
+        
+     </mat-grid-tile>
+ 
+  </mat-grid-list>
+  

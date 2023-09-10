@@ -1,0 +1,47 @@
+
+<mat-drawer-container style="height: 100%;">
+    <mat-drawer #sidenav  opened="opened" mode="side">
+        <mat-nav-list >
+            <mat-list-item>
+                <button mat-button [routerLink]="['feed',id]"><mat-icon>dashboard</mat-icon>Dashboard</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button [routerLink]="['feed',id]"><mat-icon>home</mat-icon>Home</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button routerLink="search"><mat-icon>search</mat-icon>Search</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button routerLink="messages"><mat-icon>messages</mat-icon>Messages</button>
+            </mat-list-item>
+            <mat-list-item>
+              <button mat-button routerLink="notifications"><mat-icon>notifications</mat-icon>Notifications</button>
+          </mat-list-item>
+          <mat-list-item>
+            <button mat-button  (click)="openDialog()" ><mat-icon>create</mat-icon>Create</button>
+        </mat-list-item>
+          <mat-list-item>
+            <button mat-button routerLink="profile"><mat-icon>profile</mat-icon>Profile</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button mat-button [matMenuTriggerFor]="aboveMenu"><mat-icon>more</mat-icon>More</button>
+        <mat-menu>
+            <mat-menu #aboveMenu="matMenu" yPosition="above">
+                <button mat-menu-item>settings</button>
+                <button mat-menu-item routerLink="/login">Log out?</button>
+            </mat-menu>
+        </mat-menu>
+    </mat-list-item>
+        </mat-nav-list>
+       
+
+    </mat-drawer>
+    <mat-drawer-content>
+        <div style="height: 88vh;">
+        <router-outlet></router-outlet>
+        </div>
+      </mat-drawer-content>
+  </mat-drawer-container>
+    
+  
+
