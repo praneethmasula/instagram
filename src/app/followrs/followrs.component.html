@@ -1,0 +1,111 @@
+<div style="" *ngIf="fo!='' && fo!=undefined">
+    <div class="" style="text-align: center;">
+        <h2 style="margin-top: 5px;">Followers</h2>
+    </div>
+
+    <hr>
+    <div *ngFor="let e of followers" class=" hover:bg-zinc-100" style="margin-top:20px">
+        <a (click)="goToProfile(e.id)" style="text-decoration: none;">
+            <div class=" flex gap-3 " *ngIf="e.files.length>0">
+                <div class="  px-4 " style="">
+
+                    <img [src]="e.files[0].url" alt="..."
+                        class=" example max-w-full shadow rounded-full border-none mt-1" />
+                </div>
+                <div class="flex-1 mt-1">
+                    <b style="margin-left: 14px;margin-top: 12px;">{{e.name}}</b>
+                    <br>
+                    <p style="margin-left: 14px">{{e.userName}}</p>
+                </div>
+                <div class="p-3" *ngIf="e.isFollowing=='yes' && e.id!=id">
+                    <button class="rounded-md"
+                        style="background-color: rgb(119, 119, 116);padding: 7px;">Following</button>
+                </div>
+                <div class="p-3" *ngIf="e.isFollowing=='no'  && e.id!=id">
+                    <button class="rounded-md hover:bg-blue-500"
+                        style="border: 1px solid rgb(119, 119, 116);padding: 7px;">Follow</button>
+                </div>
+            </div>
+            <div class=" flex gap-3 " *ngIf="e.files.length==0">
+                <div class=" px-4 " style="">
+
+
+                    <img src="/assets/images.jpeg" alt="..." class=" example shadow rounded-full border-none" />
+                </div>
+                <div class="flex-1 mt-1">
+                    <b style="margin-left: 14px;margin-top: 12px;">{{e.name}}</b>
+                    <br>
+                    <p style="margin-left: 14px">{{e.userName}}</p>
+                </div>
+                <div class="p-3" *ngIf="own=='yes'|| (e.isFollowing=='yes'  && e.id!=id)">
+                    <button class="rounded"
+                        style="background-color: rgb(119, 119, 116);padding: 7px;">Following</button>
+                </div>
+                <div class="p-3" *ngIf="e.isFollowing=='no'  && e.id!=id ">
+                    <button class="rounded-md hover:bg-blue-500"
+                        style="border: 1px solid rgb(119, 119, 116);padding: 7px;">Follow</button>
+                </div>
+            </div>
+        </a>
+
+
+
+    </div>
+</div>
+
+
+
+
+<div *ngIf="foo!='' && foo!=undefined">
+    <div class="" style="text-align: center;">
+        <h2 style="margin-top: 5px;">Following</h2>
+    </div>
+
+    <hr>
+    <div *ngFor="let e of followers" class=" hover:bg-zinc-100" style="margin-top:20px">
+        <a (click)="goToProfile(e.id)" style="text-decoration: none;">
+            <div class=" flex gap-3 " *ngIf="e.files.length>0">
+                <div class="  px-4 " style="">
+
+                    <img [src]="e.files[0].url" alt="..." class=" example max-w-full shadow rounded-full border-none" />
+                </div>
+                <div class="flex-1 mt-1">
+                    <b style="margin-left: 14px;margin-top: 12px;">{{e.name}}</b>
+                    <br>
+                    <p style="margin-left: 14px">{{e.userName}}</p>
+                </div>
+                <div class="p-3" *ngIf="own=='yes' || (e.isFollowing=='yes' && e.id!=id)">
+                    <button class="rounded-md"
+                        style="background-color: rgb(119, 119, 116);padding: 7px;">Following</button>
+                </div>
+                <div class="p-3" *ngIf="e.isFollowing=='no' && e.id!=id">
+                    <button class="rounded-md hover:bg-blue-500"
+                        style="border: 1px solid rgb(119, 119, 116);;padding: 7px;">Follow</button>
+                </div>
+            </div>
+            <div class=" flex gap-3 " *ngIf="e.files.length==0">
+                <div class=" px-4 " style="">
+
+
+                    <img src="/assets/images.jpeg" alt="..." class=" example shadow rounded-full border-none" />
+                </div>
+                <div class="flex-1 mt-1">
+                    <b style="margin-left: 14px;margin-top: 12px;">{{e.name}}</b>
+                    <br>
+                    <p style="margin-left: 14px">{{e.userName}}</p>
+                </div>
+                <div class="p-3" *ngIf="own=='yes' || (e.isFollowing=='yes' && e.id!=id)">
+                    <button class="rounded-md"
+                        style="background-color: rgb(119, 119, 116);padding: 7px;">Following</button>
+                </div>
+                <div class="p-3" *ngIf="e.isFollowing=='no' && e.id!=id">
+                    <button class="rounded-md hover:bg-blue-500"
+                        style="border: 1px solid rgb(119, 119, 116);padding: 7px;">Follow</button>
+                </div>
+            </div>
+        </a>
+
+
+
+    </div>
+</div>

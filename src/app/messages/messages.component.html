@@ -1,1 +1,145 @@
-<p>messages works!</p>
+<!-- component -->
+<!-- This is an example component -->
+<div class="flex h-screen" style="">
+  <div fxHide.lt-sm="true" fxHide.sm="true" id="mesages" class="max-w-2xl  "
+    style="left: 0;border: 0.5px solid rgb(204, 199, 199);">
+
+
+    <div
+      class="p-4 max-w-md bg-white rounded-lg border  overflow-auto shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 mb-5"
+      style="height: 100%;">
+      <div
+        class="flex items-center gap-3 w-full p-1 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900 mb-5">
+        <img *ngIf="user.files.length!=0"
+          class="relative inline-block h-12 w-12 !rounded-full  object-cover object-center" [src]="user.files[0].url" />
+        <img *ngIf="user.files.length==0"
+          class="relative inline-block h-12 w-12 !rounded-full  object-cover object-center" src="assets/images.jpeg" />
+
+        <h2 (click)="navv()" fxHide.lt-md="true">{{user.userName}}</h2>
+      </div>
+
+      <div class="flex justify-between items-center mb-2 ">
+        <h4 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Messages</h4>
+      </div>
+
+
+
+      <div class="relative flex flex-col text-gray-700 bg-white bg-clip-border overflow-y-auto">
+        <nav class="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700"
+          *ngFor="let f of preview">
+          <div role="button" (click)=" id!=f.to+s ? goTo(f.to) : goTo(f.from)"
+            class="flex items-center w-full p-1 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+            <div class="grid mr-3 place-items-center">
+              <img *ngIf="f.files.length!=0"
+                class="relative inline-block h-12 w-12 !rounded-full  object-cover object-center"
+                [src]="f.files[0].url" />
+              <img *ngIf="f.files.length==0"
+                class="relative inline-block h-12 w-12 !rounded-full  object-cover object-center"
+                src="assets/images.jpeg" />
+            </div>
+            <div>
+              <h4 fxHide.lt-md="true"
+                class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-blue-gray-900 bold p-0 m-0"
+                style="margin: 0px;">
+                {{f.name}}
+              </h4>
+              <p fxHide.lt-md="true"
+                class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700">
+                {{f.name}} sent an message .
+              </p>
+            </div>
+          </div>
+        </nav>
+        <div class="flex flex-col justify-center   items-center" *ngIf="preview.length==0">
+          <h2>No messages found</h2>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <div fxHide.gt-sm="true" id="mesages" class="max-w-2xl  " style="left: 0;border: 0.5px solid rgb(204, 199, 199);">
+
+
+
+
+
+    <div
+      class="p-2 max-w-md bg-white rounded-lg border  overflow-auto shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 mb-5"
+      style="height: 100%;">
+      <div
+        class="flex items-center gap-3 w-full p-1 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900 mb-5">
+        <img *ngIf="user.files.length!=0"
+          class="relative inline-block h-12 w-12 !rounded-full  object-cover object-center" [src]="user.files[0].url" />
+        <img *ngIf="user.files.length==0"
+          class="relative inline-block h-12 w-12 !rounded-full  object-cover object-center" src="assets/images.jpeg" />
+
+
+      </div>
+
+      <div class="flex justify-between items-center mb-2 ">
+        <h4 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Messages</h4>
+      </div>
+
+
+
+      <div class="relative flex flex-col text-gray-700 bg-white bg-clip-border overflow-y-auto">
+        <nav class="flex flex-col gap-1 p-1 font-sans text-base font-normal text-blue-gray-700"
+          *ngFor="let f of preview">
+          <div role="button" (click)=" id!=f.to+s ? goTo(f.to) : goTo(f.from) "
+            class="flex items-center w-full p-1 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+            <div class="grid mr-3 place-items-center">
+              <img *ngIf="f.files.length!=0"
+                class="relative inline-block h-12 w-12 !rounded-full  object-cover object-center"
+                [src]="f.files[0].url" />
+              <img *ngIf="f.files.length==0"
+                class="relative inline-block h-12 w-12 !rounded-full  object-cover object-center"
+                src="assets/images.jpeg" />
+            </div>
+            <div>
+
+
+            </div>
+          </div>
+        </nav>
+        <div class="flex flex-col justify-center   items-center" *ngIf="preview.length==0">
+          <h2>No messages found</h2>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="" id="rot">
+    <router-outlet></router-outlet>
+  </div>
+  <div id="rem" class="flex-1">
+
+    <div class="flex flex-col justify-center h-screen  items-center gap-3  mb-24">
+      <div class="max-w-30px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"
+          viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path
+            d="M256.6 8C116.5 8 8 110.3 8 248.6c0 72.3 29.7 134.8 78.1 177.9 8.4 7.5 6.6 11.9 8.1 58.2A19.9 19.9 0 0 0 122 502.3c52.9-23.3 53.6-25.1 62.6-22.7C337.9 521.8 504 423.7 504 248.6 504 110.3 396.6 8 256.6 8zm149.2 185.1l-73 115.6a37.4 37.4 0 0 1 -53.9 9.9l-58.1-43.5a15 15 0 0 0 -18 0l-78.4 59.4c-10.5 7.9-24.2-4.6-17.1-15.7l73-115.6a37.4 37.4 0 0 1 53.9-9.9l58.1 43.5a15 15 0 0 0 18 0l78.4-59.4c10.4-8 24.1 4.5 17.1 15.6z" />
+        </svg>
+
+      </div>
+
+      <h2 class="font-semibold">Your Messages</h2>
+      <p style="margin-top: -20px;">Send a message to start chat</p>
+      <button class="bg-blue-600 text-white  py-2 px-4 rounded-full" (click)="openDialog()">
+        Send Message
+      </button>
+    </div>
+    <div class="">
+
+    </div>
+
+  </div>
+</div>

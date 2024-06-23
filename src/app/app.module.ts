@@ -41,8 +41,61 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { OtherprofilesComponent } from './otherprofiles/otherprofiles.component';
 import { PostComponent } from './post/post.component';
 
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { Profile1Component } from './profile1/profile1.component';
+import { Home2Component } from './home2/home2.component';
+import { LayoutComponent } from './layout/layout.component';
 
+import {MatBadgeModule} from '@angular/material/badge';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
+import {
+
+  NgxUiLoaderConfig,
+  SPINNER,
+  POSITION,
+  PB_DIRECTION,
+} from "ngx-ui-loader";
+import { NONE_TYPE } from '@angular/compiler';
+import { FollowrsComponent } from './followrs/followrs.component';
+import { ChatComponent } from './chat/chat.component';
+import { SocketService } from './WebSocket';
+import { NgHttpInterceptor } from 'httpinterceptor';
+import { SearchUSerForChatComponent } from './search-user-for-chat/search-user-for-chat.component';
+
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  "bgsColor": "rgba(255,255,255,0.95)",
+  "bgsOpacity": 0.5,
+  "bgsPosition": "bottom-right",
+  "bgsSize": 60,
+  "bgsType": "ball-spin-clockwise",
+  "blur": 15,
+  "delay": 0,
+  "fastFadeOut": true,
+  "fgsColor": "rgba(255,255,255,0.97)",
+  "fgsPosition": "center-center",
+  "fgsSize": 20,
+  "fgsType": "three-strings",
+ 
+  "gap": 24,
+  "logoPosition": "center-center",
+  "logoSize": 120,
+  "logoUrl": "",
+  "masterLoaderId": "master",
+  "overlayBorderRadius": "0",
+  "overlayColor": "rgba(40, 40, 40, 0.8)",
+  "pbColor": "rgba(255,255,255,0.97)",
+  "pbDirection": "ltr",
+  "pbThickness": 3,
+  "hasProgressBar": true,
+  "text": "",
+  "textColor": "#FFFFFF",
+  "textPosition": "center-center",
+  "maxTime": -1,
+  "minTime": 300
+}
+;
 
 
 @NgModule({
@@ -58,7 +111,15 @@ import { PostComponent } from './post/post.component';
     CreatepostComponent,
     ProfileComponent,
     OtherprofilesComponent,
-    PostComponent
+    PostComponent,
+    Profile1Component,
+    Home2Component,
+    LayoutComponent,
+    EditProfileComponent,
+    FollowrsComponent,
+    ChatComponent,
+    SearchUSerForChatComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -80,13 +141,21 @@ import { PostComponent } from './post/post.component';
   MatSnackBarModule,
   MatTabsModule,
   MatGridListModule,
-  
-
+  FlexLayoutModule,
+  NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
   MatDialogModule,
 NgxSpinnerModule,
-    MatToolbarModule
+    MatToolbarModule,
+    // NgxUiLoaderHttpModule.forRoot({
+    //   showForeground:true
+    // }) ,
+    MatBadgeModule,
+  
+  
+    
   ],
-  providers: [{ provide: MatDialogRef, useValue: {}}, { provide: MAT_DIALOG_DATA, useValue: {} },],
+
+  providers: [{ provide: MatDialogRef, useValue: {}}, { provide: MAT_DIALOG_DATA, useValue: {} },{provide: WebSocket, useValue: 'ws://127.0.0.1:7000'},SocketService,NgHttpInterceptor],
   bootstrap: [AppComponent],
 
 })

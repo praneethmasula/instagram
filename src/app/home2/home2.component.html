@@ -1,0 +1,21 @@
+<div fxLayout="row" style="margin-top: 50px;" fxLayoutAlign="center " fxLayoutGap="60px" *ngFor="let e of post">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{e.user.name}}</mat-card-title>
+      <mat-card-subtitle>{{e.location}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="e.files[0].url" alt="Photo of a Shiba Inu" style="width: 400px;">
+    <mat-card-actions style="padding: 0px;">
+      <button mat-button><span class="material-icons"> favorite_border </span></button>
+      <button mat-button><mat-icon>comment</mat-icon></button>
+      <button mat-button><mat-icon>share</mat-icon></button>
+    </mat-card-actions>
+    <mat-card-content>
+      <p>
+        <mat-card-title>Shiba Inu</mat-card-title>{{e.caption}}
+      </p>
+    </mat-card-content>
+  </mat-card>
+
+</div>

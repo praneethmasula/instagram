@@ -4,6 +4,13 @@
     align-items: center;
     height: 100%;
   }
+
+
+  .matInput {
+    transition: none !important;
+    box-shadow: none !important;
+    background-color: white;
+}
   
   .button-flex-container {
     display: flex;

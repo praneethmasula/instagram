@@ -3,5 +3,25 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+
+
+@layer components {
+    .smalll {
+     width: 90px;
+    }
+
+    .small{
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-top: 18px;
+        
+    }
+    /* ... */
+  }

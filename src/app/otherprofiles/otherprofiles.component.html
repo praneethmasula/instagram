@@ -1,53 +1,230 @@
-<div class="" style="justify-items: center; ;margin-left: 190px;margin-top: 20px;display: flex;" >
-    <div class="" style="margin: 50px;">
-      <img  src="https://material.angular.io/assets/img/examples/shiba2.jpg" class="rounded a" align="left">
+<!-- <div class="flex flex-row">
+    <div class="" style="max-width: 300px;;overflow: hidden;max-height: 200px;">
+        <img  src="https://material.angular.io/assets/img/examples/shiba2.jpg" style="width: fit-content;"  >
     </div>
-    <div class="" style="margin: 50px;">
-           <div class="inside">
-          <span style="font-size: 20px;">{{user.userName}}</span>
-          <span><button mat-raised-button color="primary" style="height: 30px;">Follow</button></span>
-          <span><button mat-raised-button color="black" style="height: 30px;">Message</button></span>
-          <span ><button mat-button style="size: 30px;"><mat-icon class="icon-size ">more_horiz</mat-icon></button></span>
-      </div>
-      <div class="inside" style="margin-top: 30px;">
-          <span><b>20</b> posts </span>
-          <span class="ab"><b>{{user.followers}}</b> followers</span>
-          <span class="ab"><b>{{user.following}}</b> following</span>
-      </div>
-      <div class="" style="margin-top: 20px;margin-left: 5px;">
-          <h5><b>{{user.name}}</b></h5>
-          <p>Art | Music | Dance</p>
-          <p>Surya fan</p>
-      </div>
+    <div class="">
+              <div class="flex">
+                <h2>Praneethhhhhh__</h2>
+                <span><button mat-raised-button color="black" style="height: 25px;">Edit profile</button></span>
+                <span ><button mat-button style="size: 30px;"><mat-icon>settings</mat-icon></button></span>
+              </div>
     </div>
-    <br>
-</div>
-<div class="" style="width: 700px;text-align: center;justify-items: center;padding: auto;margin-left: 260px;">
 
-  <mat-tab-group animationDuration="0ms">
-      <mat-tab>
-          <ng-template mat-tab-label>
-              <mat-icon>apps</mat-icon>Posts
-            </ng-template>
-            <mat-card >
-              <mat-card-content ><mat-grid-list cols="3" [gutterSize]="'20px'" >
-                  <mat-grid-tile *ngFor="let p of posts" >
-                   
-                      <img  [src]="p.files[0].url" alt="Photo of a Shiba Inu" style="width: 300px;height: 220px;cursor: pointer;" (click)="openPost()">
-              
-                  </mat-grid-tile>
-                </mat-grid-list></mat-card-content>
-            </mat-card>
-      </mat-tab>
-      <mat-tab> 
-          <ng-template mat-tab-label>
-              <mat-icon>slideshow</mat-icon>Reels
-            </ng-template>
-      </mat-tab>
-      <mat-tab >
-          <ng-template mat-tab-label>
-              <mat-icon>person_outline</mat-icon>Tagged
-            </ng-template>
-      </mat-tab>
-    </mat-tab-group>
+</div> -->
+<div class="" *ngIf="load=='no'">
+  <div class="bg-white flex space-x-12 p-12 justify-center items-center " fxHide.lt-md="true">
+    <div class="shadow rounded-md p-4 max-w-sm w-full mx-auto">
+      <div class="animate-pulse flex space-x-4">
+        <div class="rounded-full  bg-gray-200 h-12 w-12"></div>
+        <div class="flex-1 space-y-4 py-1">
+          <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+          <div class="space-y-2">
+            <div class="h-4  bg-gray-200 rounded"></div>
+            <div class="h-4  bg-gray-200 rounded w-5/6"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col space-x-12 p-12 justify-center items-center   gap-4 mt-20" fxHide-md="true"
+    fxHide.gt-md="true">
+    <div class="animate-pulse rounded-full h-20 w-20 bg-gray-200 mb-4"></div>
+    <div class="h-5 bg-gray-200 rounded w-1/2"></div>
+    <div class="h-5  bg-gray-200 rounded w-1/2"></div>
+    <div class="h-5  bg-gray-200 rounded w-1/2"></div>
+    <div class="h-5 bg-gray-200 rounded w-1/2"></div>
+    <div class="h-5  bg-gray-200 rounded w-1/2"></div>
+  </div>
+
+  <div class="flex space-x-12 p-12 justify-center items-center">
+    <div role="status"
+      class="max-w-lg p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700"
+      style="width: 400px;">
+      <div class="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700">
+        <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor" viewBox="0 0 16 20">
+          <path
+            d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
+          <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+        </svg>
+      </div>
+      <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-200 w-48 mb-4"></div>
+      <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-200 mb-2.5"></div>
+      <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-200 mb-2.5"></div>
+      <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-200"></div>
+
+      <span class="sr-only">Loading...</span>
+    </div>
+
+
+    <div role="status"
+      class="max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700"
+      style="width: 400px;">
+      <div class="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700">
+        <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor" viewBox="0 0 16 20">
+          <path
+            d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
+          <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+        </svg>
+      </div>
+      <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+      <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+      <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+      <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+
+      <span class="sr-only">Loading...</span>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="flex flex-wrap justify-center p-9 gap-9 md:gap-9" *ngIf="load=='yes'">
+  <div class=" px-4  " *ngIf="user.files.length==0">
+    <img src="/assets/images.jpeg" class="example rounded-full shadow max-w-full  border-none" />
+  </div>
+  <div class="px-4 " style="" *ngIf="user.files.length!=0">
+    <img [src]="user.files[0].url" alt="..." class="example shadow rounded-full max-w-full  border-none" />
+  </div>
+  <div class="">
+    <div class="flex gap-5">
+      <h2 style="margin-bottom: 0px;">{{user.userName}}</h2>
+      <div *ngIf="friends().status=='sent'">
+        <button (click)="removeRequest()" type="button"
+          class="px-5 py-2 text-xs font-medium text-center inline-flex items-center  bg-gray-300   rounded-lg hover:bg-gray-400  focus:ring-4 focus:outline-none focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          Requested
+        </button>
+
+      </div>
+      <div *ngIf="friends().status=='noo' || friends().status=='removed' ">
+        <button type="button" (click)="sendRequest()"
+          class="px-5 py-2 text-xs font-medium text-center inline-flex items-center   text-white bg-blue-700   rounded-lg hover:bg-gray-400  focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+
+          Follow
+        </button>
+
+      </div>
+      <div *ngIf="friends().status=='accepted'">
+
+        <button type="button" (click)="removeRequest()"
+          class="px-5 py-2 text-xs font-medium text-center inline-flex items-center  bg-gray-300  rounded-lg hover:bg-gray-400  focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+
+          Following
+        </button>
+      </div>
+
+      <div *ngIf="friends().status=='accepted'">
+        <button type="button" (click)="go()"
+          class="px-5 py-2 text-xs font-medium text-center inline-flex items-center  bg-gray-300   rounded-lg hover:bg-gray-400  focus:ring-4 focus:outline-none focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          Message
+        </button>
+
+      </div>
+
+
+    </div>
+    <div class="flex gap-9 mt-3">
+      <h3 style="margin-bottom: 0px;">{{posts.length}} posts</h3>
+      <button (click)="showFollowers()" *ngIf="status=='true'">{{followers.length}} followers</button>
+      <button (click)="showFollowing()" *ngIf="status=='true'">{{following.length}} following</button>
+      <button (click)="showFollowers()" *ngIf="status=='false'" disabled>{{followers.length}} followers</button>
+      <button (click)="showFollowing()" *ngIf="status=='false'" disabled>{{following.length}} following</button>
+
+    </div>
+    <div class="flex flex-col gap-3 mt-3">
+      <h2 style="margin-bottom: 0px;">{{user.name}}</h2>
+      <p>{{user.bio}}</p>
+
+      <div class="" *ngIf="mutauls=='yes'">
+        <p>Followed by
+          <span *ngFor="let f of followers">
+            <p *ngIf="f.isFollowing==='yes'" class="font-bold" style="display: inline;">
+              {{f.userName}},
+            </p>
+          </span>
+
+        </p>
+      </div>
+      <!-- <button>38 followers</button>
+    <button>219 following</button> -->
+
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="(friends().status=='sent' || friends().status=='noo' || friends().status=='removed'  )  && load=='yes'"
+  class="flex justify-center">
+  <hr>
+  <div class="w-4/5 p-3 md:p-9 mx-3 mt-3 md:mt-16  border-2 border-black" style="text-align: center;">
+    <h3>This Account is private</h3>
+    <p>follow to see their photos and videos</p>
+  </div>
+</div>
+
+<div *ngIf="friends().status=='accepted'" style="justify-items: center;text-align: center;padding-left: 50px;">
+
+  <div class="mb-4 border-t border-gray-200 dark:border-gray-700 w-full md:mt-16" style="text-align: center;;">
+    <ul class="flex justify-center gap-9   text-sm font-medium text-center">
+      <li [ngClass]="{'border-t border-black text-zinc-950': openTab === 1}">
+        <button class="p-3 btn " (click)="toggleTabs(1)" style="font-size: 11px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-grid-3x3-gap"
+            viewBox="0 0 16 16" style="display: inline;">
+            <path
+              d="M4 2v2H2V2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1M9 2v2H7V2zm5 0v2h-2V2zM4 7v2H2V7zm5 0v2H7V7zm5 0h-2v2h2zM4 12v2H2v-2zm5 0v2H7v-2zm5 0v2h-2v-2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z" />
+          </svg> POSTS
+        </button>
+      </li>
+      <li [ngClass]="{'border-t border-black ': openTab === 2}">
+        <button class="p-3 btn " (click)="toggleTabs(2)" style="font-size: 12px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-person-square"
+            viewBox="0 0 16 16" style="display: inline;">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+            <path
+              d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z" />
+          </svg> TAGGED
+        </button>
+      </li>
+
+
+    </ul>
+  </div>
+
+
+
+</div>
+
+<div class="tab-content tab-space mt-9  px-9 " *ngIf="friends().status=='accepted'">
+  <div class="grid grid-cols-1  md:grid-cols-3 gap-1 pb-9"
+    [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
+    <div class="w-full h-full relative group" style="cursor: pointer;" *ngFor="let p of posts">
+      <button style="margin-left: auto;top: 50%;position: relative;z-index: 10;left: 45%;" class="transition transform  
+      translate-y-4 ease-in-out invisible  
+      absolute group-hover:visible   
+       
+      text-white group-hover:translate-y-0 group-hover:brightness-125">
+        <span style="font-size: 25px;font-weight: 800;">{{p.likes}}</span><svg xmlns="http://www.w3.org/2000/svg"
+          width="30" height="30" fill="white" class="bi bi-heart-fill" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
+        </svg>
+      </button>
+      <div class="gp w-full h-full">
+        <div class="parent shadow-lg ">
+          <img class="child" [src]="p.files[0].url">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}"
+    style="text-align: center;margin-top: 100px;padding-left: auto;padding-right: auto;">
+
+    <h2 style="font-weight: 800;font-size: 30px;">
+      <mat-icon style="font-size: 30px;">folder_shared</mat-icon>
+      <br>
+      <br>
+      No Photos
+    </h2>
+  </div>
 </div>

@@ -9,5 +9,7 @@ export class Post{
     "likes":number;
     "comment":string;
     "user":User;
+    "noOfMins":string='';
     "files":FileHandler[]=[];
+    "isliked":boolean=false;
 }

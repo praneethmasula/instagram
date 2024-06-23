@@ -7,11 +7,12 @@ import { Post } from 'src/post';
 })
 export class PostserviceService {
 
-  private basicURl:string = "http://localhost:8080/post";
+  private basicURl:string = "https://insta-p4ma.onrender.com/post";
+ 
   constructor(private http:HttpClient) { }
 
   savePsot(pos:FormData,id:number){
-   return  this.http.post(`${this.basicURl}/${id}`,pos);
+   return  this.http.post(`${this.basicURl}/${id}`,pos,{responseType:'text'});
   }
 
   getPostsByUSerId(id:number){
@@ -21,4 +22,16 @@ export class PostserviceService {
   getPostOfOwn(id:number){
     return this.http.get<Post[]>(`${this.basicURl}/posts/${id}`)
   }
+
+  updatePostLikes(id:number,idd:number){
+    return this.http.get<Post>(`${this.basicURl}/user/${id}/post/${idd}`);
+  }
+  removePostLikes(id:number,idd:number){
+    return this.http.get<Post>(`${this.basicURl}/userr/${id}/post/${idd}`);
+  }
+
+  getPostsLikedByUSer(id:number)
+  {
+    return this.http.get<Post[]>(`${this.basicURl}/postsliked/${id}`)
+}
 }

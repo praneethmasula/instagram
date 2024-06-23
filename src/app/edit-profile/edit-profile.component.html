@@ -1,0 +1,36 @@
+<div class="flex-col justify-center m-9">
+  <h2 style="font-weight: 800;">Edit Profile</h2>
+  <div class="flex  bg-zinc-400 p-3 rounded-lg mt-6">
+    <div class=" aspect-auto" style="width: 100px;">
+      <img [src]="user.files[0].url" alt="..."
+        class="relative inline-block h-20 w-20 !rounded-full  object-cover object-center" />
+    </div>
+    <div class="w-full">
+      <div class="flex gap-3 justify-between flex-col sm:flex-row">
+        <div class="">
+          <h2 style="margin-bottom: 0px;">{{user.userName}}</h2>
+          <p>{{user.name}}</p>
+        </div>
+        <div class="mt-3">
+          <form>
+            <input type="file" name="file" id="file" color="secondary" (change)="onFileChanged($event)"
+              style="z-index: -1;width: 0.1px;height: 0.1px;">
+            <label for="file" style="margin-top: 20px;"
+              class="bg-blue-500 p-3 hover:bg-blue-700 text-white font-bold rounded-full  ">
+              Change Photo
+            </label>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <h3 class="" style="margin-top: 80px;font-weight: 800;">Bio</h3>
+  <textarea class="resize rounded-md w-full" [(ngModel)]="user.bio"></textarea>
+  <button class=" w-1/4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+    style="margin-top: 50px;" (click)="createPost()">
+    Submit
+  </button>
+
+</div>
