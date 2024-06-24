@@ -164,9 +164,9 @@
   </div>
 </div>
 
-<div *ngIf="friends().status=='accepted'" style="justify-items: center;text-align: center;padding-left: 50px;">
+<div  *ngIf="friends().status=='accepted'" style="justify-items: center;text-align: center;padding-left: 50px;">
 
-  <div class="mb-4 border-t border-gray-200 dark:border-gray-700 w-full md:mt-16" style="text-align: center;;">
+  <div  *ngIf="load=='yes'" class="mb-4 border-t border-gray-200 dark:border-gray-700 w-full md:mt-16" style="text-align: center;;">
     <ul class="flex justify-center gap-9   text-sm font-medium text-center">
       <li [ngClass]="{'border-t border-black text-zinc-950': openTab === 1}">
         <button class="p-3 btn " (click)="toggleTabs(1)" style="font-size: 11px;">
@@ -197,7 +197,7 @@
 </div>
 
 <div class="tab-content tab-space mt-9  px-9 " *ngIf="friends().status=='accepted'">
-  <div class="grid grid-cols-1  md:grid-cols-3 gap-1 pb-9"
+  <div  *ngIf="load=='yes'" class="grid grid-cols-1  md:grid-cols-3 gap-1 pb-9"
     [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
     <div class="w-full h-full relative group" style="cursor: pointer;" *ngFor="let p of posts">
       <button style="margin-left: auto;top: 50%;position: relative;z-index: 10;left: 45%;" class="transition transform  

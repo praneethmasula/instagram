@@ -84,9 +84,9 @@ export class Profile1Component {
         this.postser.getPostOfOwn(this.id).subscribe(d => {
           if (d != null) {
             this.posts = d;
-          
+            this.load = 'yes'
             for (let p of this.posts) {
-              this.load = 'yes'
+             
               this.createImage(p);
             }
             

@@ -30,7 +30,13 @@
                 <img class=" object-contain  h-96 w-96 " [src]="imgURL">
             </div>
             <div class="pt-5 border-l-2 border-gray-200">
-                <p style="">Praneeth-----</p>
+                <div class="flex place-items-center">
+                <img  *ngIf="user.files.length>0" class="relative inline-block h-9 w-9 !rounded-full  object-cover object-center"
+                [src]="user.files[0].url" />
+                <img *ngIf="user.files.length==0"
+                class="relative inline-block h-9 w-9 !rounded-full  object-cover object-center" src="assets/images.jpeg" />
+                <p>{{user.userName}}</p>
+                </div>
                 <textarea [(ngModel)]="post.caption" class="border-0 focus:outline-none focus:ring-0 resize-none"
                     placeholder="Write a caption..." cols="20" rows="10"></textarea>
             </div>

@@ -22,6 +22,7 @@ export class CreatepostComponent implements OnInit {
   post: Post = new Post();
   public imagePath: any;
   imgURL: any;
+  user:User=new User();
   public message: string | undefined;
   preview(files: any) {
     let ele = document.getElementById('ww');
@@ -68,7 +69,12 @@ export class CreatepostComponent implements OnInit {
       
     }
     if (id != null) {
+      
       this.dataaa = parseInt(id);
+      this.ser.getUserbyId(this.dataaa).subscribe(D=>{
+             this.user=D;
+             this.user = this.createImage(this.user);
+      })
     }
     
     // this.post.caption="Attitude";
@@ -144,9 +150,9 @@ export class CreatepostComponent implements OnInit {
       location.reload();
       if (d != null || d == "saved") {
 
-
-        this.rou.navigate(['/main/feed']);
         this.ngxService.stop();
+        this.rou.navigate(['/main/feed']);
+        
 
       }
       else {
