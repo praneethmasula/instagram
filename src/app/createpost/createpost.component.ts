@@ -92,10 +92,29 @@ export class CreatepostComponent implements OnInit {
 
     //this.ngxService.start();
     const selectedfile = event.target.files[0];
+    let len=selectedfile.size;
+    console.log("len:"+len);
+    if(len>1048507){
+      const config = new MatSnackBarConfig();
+      config.duration = 2000
+      config.panelClass = ['background-red'];
+      config.verticalPosition = 'top';
+      config.horizontalPosition = 'center';
+      this.zone.run(() => {
+        this._snackBar.open('Please uplod only images of size less than 1 mb', 'x', config,
+        );
+        setTimeout(() => {
+          this.dialogRef.close();
+        }, 3000);
+        
+       
+      });
+    }
     const filehandle: FileHandler = {
       file: selectedfile,
       url: this.santizer.bypassSecurityTrustUrl(window.URL.createObjectURL(selectedfile))
     }
+
     if (this.post.files != undefined) {
       this.post.files.push(filehandle)
     }

@@ -1,12 +1,10 @@
-<div class="" style="padding-bottom: 100px;">
+<div class="" style="padding-bottom: 50px;">
   <div class="ee" style="width: fit-content;margin-top: 50px;" *ngFor="let e of pos()">
     <mat-card class="example-card" style="">
       <mat-card-header>
         <div mat-card-avatar class="h-30 w-30">
           <img *ngIf="e.user.files.length>0" class="relative inline-block h-15 w-20 !rounded-full  object-cover object-center"
-            [src]="e.user.files[0].url">
-            
-   
+            [src]="e.user.files[0].url"> 
             <img *ngIf="e.user.files.length==0" src="/assets/images.jpeg"  class="relative inline-block h-15 w-20 !rounded-full  object-cover object-center" />
         </div>
         <mat-card-title (click)="viewProfile(e.user.id)">{{e.user.userName}}</mat-card-title>
@@ -15,7 +13,7 @@
         <p style="margin-left: -5px;margin-top: -5px;color: rgb(138, 139, 140);"> <span
             style="font-size: 40px;">.</span> {{e.noOfMins}}</p>
       </mat-card-header>
-      <img mat-card-image [src]="e.files[0].url" alt="Photo of a Shiba Inu" style="width: 400px;">
+      <img mat-card-image [src]="e.files[0].url" class="relative inline-block h-30   object-cover object-center" alt="Photo of a Shiba Inu" style="width: 400px;overflow: hidden;">
       <mat-card-actions style="padding: 0px;">
         <div *ngIf="e.isliked;else other_content">
           <button mat-icon-button (click)="like(e.id)">
@@ -62,6 +60,7 @@
     </mat-card>
   </div>
 </div>
+
 <div class="" *ngFor="let r of [1,2,3]">
   <div role="status"
     class=" ee max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse mb-9 md:p-6 dark:border-gray-700"
