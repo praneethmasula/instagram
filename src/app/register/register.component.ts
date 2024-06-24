@@ -34,7 +34,7 @@ export class RegisterComponent {
     userName:this.formmm.control('',[Validators.required,Validators.minLength(3)]),
     password:this.formmm.control('',[Validators.required,Validators.minLength(5)]),
     phooneNumber:this.formmm.control('',[Validators.required,Validators.pattern("^(0|[1-9][0-9]{0,100})$"),Validators.minLength(10),Validators.maxLength(10)]),
-    name:this.formmm.control('',[Validators.required,Validators.minLength(5)])
+    name:this.formmm.control('',[Validators.required,Validators.minLength(3),])
   });
 
   Login(){
@@ -45,11 +45,19 @@ export class RegisterComponent {
       if(e!=null){
         this.uservice.isUserNameAvailable(e+'').subscribe(d=>{
                    if(d=='true'){
-                    
+                     const config = new MatSnackBarConfig();
+                      config.duration = 2000
+                      config.panelClass = ['background-red'];
+                      config.verticalPosition = 'top';
+                      config.horizontalPosition = 'right';
+                      this.zone.run(() => {
+                        this._snackBar.open('UserName Already Exist', 'x', config,
+                        );
+                
+                      });
                       this.already='yes';
-                   } 
-
-                   if(this.already=='false'){
+                   }
+                    else if(d=='false'){
                     this.ngxService.start();
                     Object.assign(this.user, this.userform.value);
                     this.uservice.saveUser(this.user).subscribe(d=>{

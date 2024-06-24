@@ -18,9 +18,9 @@
             <br>
 
             <mat-form-field appearance="outline">
-                <mat-error *ngIf="userform.get('phooneNumber')?.hasError('minlength')">Please enter a valid
-                    Number</mat-error>
-                <mat-error *ngIf="userform.get('phooneNumber')?.hasError('required')">This field is required</mat-error>
+                <mat-error *ngIf="userform.get('name')?.hasError('minlength')">Please enter a valid
+                    name</mat-error>
+                <mat-error *ngIf="userform.get('name')?.hasError('required')">This field is required</mat-error>
                 <input placeholder="Name" matInput formControlName="name">
             </mat-form-field>
             <br>
