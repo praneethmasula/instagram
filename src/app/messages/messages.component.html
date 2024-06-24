@@ -104,10 +104,6 @@
 
   <div fxHide.gt-sm="true" id="mesages" class="max-w-2xl  " style="left: 0;border: 0.5px solid rgb(204, 199, 199);">
 
-
-
-
-
     <div
       class="p-2 max-w-md bg-white rounded-lg border  overflow-auto shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 mb-5"
       style="height: 100%;">
@@ -124,9 +120,6 @@
       <div class="flex justify-between items-center mb-2 ">
         <h4 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Messages</h4>
       </div>
-
-
-
       <div class="relative flex flex-col text-gray-700 bg-white bg-clip-border overflow-y-auto">
         <nav class="flex flex-col gap-1 p-1 font-sans text-base font-normal text-blue-gray-700"
           *ngFor="let f of preview">
@@ -141,18 +134,12 @@
                 src="assets/images.jpeg" />
             </div>
             <div>
-
-
             </div>
           </div>
         </nav>
-        <div class="flex flex-col justify-center   items-center" *ngIf="preview.length==0">
-          <h2>No messages found</h2>
+        <div  class="flex flex-col justify-center   items-center" *ngIf="preview.length==0 ">
+          <h2 *ngIf="load=='yes'">No messages found</h2>
         </div>
-
-
-
-
       </div>
     </div>
   </div>

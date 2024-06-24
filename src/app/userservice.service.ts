@@ -24,7 +24,7 @@ updateUSerBio(bio:string,id:number){
 }
 
 isUserNameAvailable(uname:string){
-  return this.http.get(`${this.basicURl}/user/isUSerPresent/${uname}`);
+  return this.http.get(`${this.basicURl}/user/isUSerPresent/${uname}`,{responseType:'text'});
 }
 
 

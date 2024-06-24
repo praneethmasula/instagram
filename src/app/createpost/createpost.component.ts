@@ -102,16 +102,15 @@ export class CreatepostComponent implements OnInit {
     console.log("len:"+len);
     if(len>1048507){
       const config = new MatSnackBarConfig();
-      config.duration = 2000
+      config.duration = 3000
       config.panelClass = ['background-red'];
       config.verticalPosition = 'top';
       config.horizontalPosition = 'center';
       this.zone.run(() => {
+        this.dialogRef.close();
         this._snackBar.open('Please uplod only images of size less than 1 mb', 'x', config,
         );
-        setTimeout(() => {
-          this.dialogRef.close();
-        }, 3000);
+       
         
        
       });

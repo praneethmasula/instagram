@@ -74,7 +74,8 @@ export class MessagesComponent {
               this.userrr = d;
               e.files = this.userrr.files;
               this.createImagegs(e);
-this.load='yes'
+              this.load='yes' 
+
               
             });
           }

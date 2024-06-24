@@ -45,8 +45,6 @@ export class LoginComponent implements OnInit {
         if (d != null) {
           this.user = d;
           if (this.user.id != null) {
-
-
             this.zone.run(() => {
               this.ngxService.start();
             });
