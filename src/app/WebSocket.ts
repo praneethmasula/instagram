@@ -3,7 +3,7 @@ import { Stomp } from "@stomp/stompjs";
 import * as SockJS from "sockjs-client";
 
 export class SocketService {
-    webSocketEndPoint: string = 'http://localhost:8080/ws';
+    webSocketEndPoint: string = 'https://insta-p4ma.onrender.com/ws';
     topic: string = "/topic/greetings";
     stompClient: any;
     messages:any=[];

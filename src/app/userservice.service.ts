@@ -15,7 +15,7 @@ export class UserserviceService {
  
 
   id:any;
-  private basicURl:string = "http://localhost:8080";
+  private basicURl:string = "https://insta-p4ma.onrender.com";
   constructor(private http:HttpClient) { }
 
 

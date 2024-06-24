@@ -7,7 +7,7 @@ import { Post } from 'src/post';
 })
 export class PostserviceService {
 
-  private basicURl:string = "http://localhost:8080/post";
+  private basicURl:string = "https://insta-p4ma.onrender.com/post";
  
   constructor(private http:HttpClient) { }
 
