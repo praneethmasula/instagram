@@ -9,7 +9,7 @@ import { Message } from 'message';
 })
 export class ChatService {
 
-  baseUrl = "https://insta-p4ma.onrender.com";
+  baseUrl = "http://localhost:8080";
 
   constructor(private httpClient: HttpClient) { }
 

@@ -15,7 +15,7 @@ export class UserserviceService {
  
 
   id:any;
-  private basicURl:string = "https://insta-p4ma.onrender.com";
+  private basicURl:string = "http://localhost:8080";
   constructor(private http:HttpClient) { }
 
 
@@ -72,13 +72,13 @@ isUserNameAvailable(uname:string){
 
 
   sendRequest(uid:number,fid:number){
-    console.log(uid);
-    console.log(fid);
+    
+    
     return this.http.post<Friends>(`${this.basicURl}/user/req/${uid}/d/${fid}`,[]);
   }
   removeeeRequest(uid:number,fid:number){
-    console.log(uid);
-    console.log(fid);
+    
+    
     return this.http.post<Friends>(`${this.basicURl}/user/removereq/${uid}/d/${fid}`,[]);
   }
 

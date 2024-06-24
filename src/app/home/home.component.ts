@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
   formscontol = new FormControl('');
   constructor(private sanitizer: DomSanitizer, private dialog: MatDialog, private rou: ActivatedRoute, private user: UserserviceService, private rr: Router, private ngxService: NgxUiLoaderService,) {
     effect(() => {
-      console.log('counter value:' + this.val());
+      
       this.filterResults(this.val())
 
     },
@@ -58,6 +58,7 @@ export class HomeComponent implements OnInit {
   }
   id: any;
   ngOnInit(): void {
+   
     this.id = this.user.loggedinUSer();
     this.fetchData();
     this.user.getRequests(this.id).subscribe(d => {
@@ -91,9 +92,9 @@ export class HomeComponent implements OnInit {
     this.closeNav();
     this.closeNavv();
     this.count++;
-    console.log("id:dd" + id);
-    console.log("sff:" + this.id)
-    console.log(this.id == id)
+    
+    
+    
 
     if (this.id == id) {
       this.rr.navigate(['/main/profile']);
@@ -180,7 +181,7 @@ export class HomeComponent implements OnInit {
 
     var res = '';
     var ele = localStorage.getItem(this.id);
-    console.log(ele)
+    
     if (ele == null) {
 
       res += vaa;
@@ -188,8 +189,8 @@ export class HomeComponent implements OnInit {
     }
     if (ele != null) {
       var e = JSON.parse(ele)
-      console.log(e);
-      console.log(vaa)
+      
+      
 
       if (e == '' || e == "") {
 
@@ -197,9 +198,9 @@ export class HomeComponent implements OnInit {
 
       }
       else {
-        console.log("pppppp");
-        console.log(e.includes(vaa));
-        console.log(e.includes(JSON.stringify(vaa)))
+        
+        
+        
         if (!e.includes(vaa)) {
 
           res = res + ele + ":" + vaa;
@@ -207,7 +208,7 @@ export class HomeComponent implements OnInit {
 
       }
     }
-    console.log(res);
+    
     if (res != '' && id != this.id) {
       localStorage.setItem(this.id, JSON.stringify(res));
     }
@@ -367,17 +368,17 @@ export class HomeComponent implements OnInit {
     this.id = this.user.loggedinUSer();
     var ele = localStorage.getItem(this.id);
     this.storagee = [];
-    console.log(ele)
+    
     if (ele != null) {
       var res = JSON.parse(ele).split(':')
-      console.log(res);
+      
     }
     if (res != null) {
       for (let i = 0; i < res.length; i++) {
         this.sr = new storage();
         var eee = res[i];
         var tt = eee.split(',');
-        console.log(tt)
+        
         this.sr.id = tt[0];
         this.sr.name = tt[1];
         this.sr.userName = tt[2];
@@ -385,13 +386,13 @@ export class HomeComponent implements OnInit {
       }
 
     }
-    console.log(this.storagee);
+    
     this.sttt.set(this.storagee);
   }
 
 
   click() {
-    console.log("searched")
+    
   }
 
   openNavv(s: string) {

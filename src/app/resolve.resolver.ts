@@ -11,7 +11,7 @@ export const resolveResolver: ResolveFn<any> = (route, state,us=inject(Userservi
   
  let  iddd=us.loggedinUSer();
 
- console.log("user:"+iddd)
+ 
  let id:any
  if(iddd!=null){
   id=parseInt(iddd);
@@ -30,21 +30,21 @@ export const resolveResolver: ResolveFn<any> = (route, state,us=inject(Userservi
           createImagee(e.user)
 
         }
-       console.log("likedlen:"+postLiked.length);
+       
    
         for(var i=0;i<post.length;i++){
-          console.log("d=>"+post[i].id);
+          
           for(var j=0;j<postLiked.length;j++){
-            console.log("d1=>"+postLiked[j].id);
+            
                   if(post[i].id==postLiked[j].id){
-                    console.log("liked liked")
+                    
                   post[i].isliked=true;
                   }
                 }
                 post[i].noOfMins=calculatrTime(post[i].postedTime)+'';
     
         }
-        console.log(JSON.stringify(post))
+        
        return pos.set(post);
       
       })
@@ -74,7 +74,7 @@ if(resultInMinutes>1){
   return resultInMinutes+'d'
   }
 return d;
-console.log(resultInMinutes)
+
 
   }
 

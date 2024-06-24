@@ -20,6 +20,7 @@ export class MessagesComponent {
   userrr: User = new User();
   following: User[] = [];
   count: number = 0;
+  load:string='no';
   readonly dialog = inject(MatDialog);
   preview: Message[] = [];
   id: any;
@@ -50,7 +51,7 @@ export class MessagesComponent {
           for (let j = 0; j < this.following.length; j++) {
             if (JSON.stringify(this.following[i].id) == JSON.stringify(this.following[j].id)) {
               this.following[i].isFollowing = 'yes';
-              console.log("fredsss")
+              
 
             }
             else {
@@ -73,13 +74,14 @@ export class MessagesComponent {
               this.userrr = d;
               e.files = this.userrr.files;
               this.createImagegs(e);
-              console.log(this.preview)
+this.load='yes'
+              
             });
           }
 
           let iddd = rr.snapshot.paramMap.get('id');
           if (iddd != null) {
-            console.log("ddfgfghgjhjhjhkj")
+            
             let e = document.getElementById("rot");
             let ele = document.getElementById("rem")
             ele?.remove()
@@ -90,7 +92,7 @@ export class MessagesComponent {
       },
         (e: HttpErrorResponse) => {
           alert('please try again later...')
-          console.log(e.error);
+          
           // Should print 'The Category Name is taken'
         });
     });
@@ -101,7 +103,7 @@ export class MessagesComponent {
   }
 
   closeNav() {
-    console.log("gjgjgs")
+    
     var ele = document.getElementById("mesages");
     var ele1 = document.getElementById("sidebar");
     var elements = document.querySelectorAll<HTMLElement>('.he');
@@ -169,7 +171,7 @@ export class MessagesComponent {
     let e = document.getElementById("rot");
     let ele = document.getElementById("rem")
     ele?.remove()
-    console.log("going toooo::")
+    
     e?.classList.add('flex-1')
     this.count++;
     if (this.count % 2 != 0) {
@@ -205,7 +207,7 @@ export class MessagesComponent {
   }
 
   // dialogRef.afterClosed().subscribe(result => {
-  //   console.log('The dialog was closed');
+  //   
   //   if (result !== undefined) {
   //     // this.animal.set(result);
   //   }

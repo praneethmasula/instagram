@@ -21,7 +21,7 @@ export class SearchUSerForChatComponent {
     this.fetchData();
     this.loggesin = user.loggedinUSer();
     effect(() => {
-      console.log('counter value:' + this.val());
+      
       this.filterResults(this.val())
 
     },
@@ -37,7 +37,7 @@ export class SearchUSerForChatComponent {
       let e = document.getElementById("rot");
       let ele = document.getElementById("rem")
       ele?.remove()
-      console.log("going toooo::")
+      
       e?.classList.add('flex-1')
       this.rr.navigate(['/main/messages/direct', id])
     }

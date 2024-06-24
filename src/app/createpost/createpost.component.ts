@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, NgZone, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,6 +9,7 @@ import { PostserviceService } from '../postservice.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { User } from 'src/user';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-createpost',
@@ -47,20 +48,29 @@ export class CreatepostComponent implements OnInit {
   }
   dataaa: any;
   constructor(private santizer: DomSanitizer, private r: ActivatedRoute, private dialogRef: MatDialogRef<CreatepostComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private ser: UserserviceService, private psotservice: PostserviceService, private spinnerService: NgxSpinnerService, private rou: Router, private ngxService: NgxUiLoaderService, private sanitizer: DomSanitizer,) {
+    @Inject(MAT_DIALOG_DATA) public data: any, private ser: UserserviceService, private psotservice: PostserviceService, private spinnerService: NgxSpinnerService, private rou: Router, private ngxService: NgxUiLoaderService, private sanitizer: DomSanitizer,private zone: NgZone,private _snackBar: MatSnackBar) {
 
   }
   ngOnInit(): void {
     let id = sessionStorage.getItem("uid");
 
     if (id == null) {
-      alert('Please login to continue');
-      this.rou.navigate(['/login']);
+      const config = new MatSnackBarConfig();
+      config.duration = 2000
+      config.panelClass = ['background-red'];
+      config.verticalPosition = 'top';
+      config.horizontalPosition = 'center';
+      this.zone.run(() => {
+        this._snackBar.open('Please try again later...', 'x', config,
+        );
+        this.rou.navigate(['/login']);
+      });
+      
     }
     if (id != null) {
       this.dataaa = parseInt(id);
     }
-    console.log(this.dataaa)
+    
     // this.post.caption="Attitude";
     this.post.likes = 0;
     this.post.postedTime = new Date();
@@ -110,7 +120,7 @@ export class CreatepostComponent implements OnInit {
     this.ngxService.start()
 
     const formdat = this.prepareFormData(this.post);
-    console.log(this.post);
+    
     this.psotservice.savePsot(formdat, this.dataaa).subscribe(d => {
       location.reload();
       if (d != null || d == "saved") {

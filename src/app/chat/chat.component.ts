@@ -27,10 +27,11 @@ export class ChatComponent {
   message: string = ''
   loggedUSer: any
   toUSer: any;
+  load:string='no';
   messgaesss: cc[] = [];
   messagess = signal<cc[]>([]);
   likeChange = effect(() => {
-    console.log("tjsdfif", this.ssss.pos);
+    
   });
   constructor(private sss: UserserviceService, private sssss: AppComponent, private ro: ActivatedRoute, private sanitizer: DomSanitizer, private ssss: SocketService, private chstser: ChatService, private r: Router) {
 
@@ -45,7 +46,7 @@ export class ChatComponent {
     }
     const id = sss.loggedinUSer();
     this._connect();
-    console.log("looggg:" + id)
+    
     if (id != null && idd != null) {
       chstser.getChatById(id, idd).subscribe(d => {
         this.messgaesss = d;
@@ -53,9 +54,7 @@ export class ChatComponent {
           return <any>new Date(b.time) - <any>new Date(a.time);
         });
         this.messagess.set(this.messgaesss);
-        for (let f of this.messgaesss) {
-          console.log("earlier:" + JSON.stringify(f))
-        }
+        this.load='yes';
 
       })
     }
@@ -64,7 +63,7 @@ export class ChatComponent {
       this.loggedUSer = id;
 
       sss.getUserbyId(parseInt(id)).subscribe(d => {
-        console.log('kkk' + d.name)
+        
         this.user = d;
         this.user = this.createImageg(this.user);
         if (idd != null) {
@@ -72,7 +71,7 @@ export class ChatComponent {
           sss.getUserbyId(parseInt(idd)).subscribe(d => {
             this.chatUSer = d;
             this.chatUSer = this.createImageg(this.chatUSer);
-            console.log("cjatt" + JSON.stringify(this.chatUSer))
+            
           })
         }
 
@@ -107,9 +106,9 @@ export class ChatComponent {
 
   SendMessage() {
 
-    console.log("loggedInUsr:" + this.loggedUSer)
+    
 
-    console.log("toSUser:" + this.toUSer)
+    
     let e = {
       "message": this.message,
       "from": this.loggedUSer,
@@ -125,7 +124,7 @@ export class ChatComponent {
     //   return <any>new Date(b.time) - <any>new Date(a.time);
     // });
 
-    // console.log("messagessss:"+this.messgaesss)
+    // 
 
     // this.messagess.set(this.messgaesss); 
     this._send(e);
@@ -176,32 +175,32 @@ export class ChatComponent {
   messages: any = [];
   pos = signal<any>([]);
   _connect() {
-    console.log("Initialize WebSocket Connection");
+    
     let ws = new SockJS(this.webSocketEndPoint);
     this.stompClient = Stomp.over(ws);
     const _this = this;
     _this.stompClient.connect({}, function (frame: any) {
       _this.stompClient.subscribe(_this.topic, function (sdkEvent: any) {
         let ee = _this.onMessageReceived(sdkEvent)
-        console.log("mess:" + ee)
+        
         _this.messgaesss.push(ee)
         _this.messgaesss.sort((a: any, b: any) => {
           return <any>new Date(b.time) - <any>new Date(a.time);
         });
 
-        console.log("beeee:" + _this.messgaesss)
+        
         _this.messagess.set(_this.messgaesss)
-        console.log(_this.messgaesss.length)
-        console.log("all:" + _this.messagess)
+        
+        
         for (let f of _this.messgaesss) {
-          console.log("after:" + JSON.stringify(f))
+          
         }
 
 
       });
       //_this.stompClient.reconnect_delay = 2000;
     }, (error: string) => {
-      console.log("errorCallBack -> " + error)
+      
       setTimeout(this._connect, 5000);
     });
   };
@@ -215,22 +214,22 @@ export class ChatComponent {
     if (this.stompClient !== null) {
       this.stompClient.disconnect();
     }
-    console.log("Disconnected");
+    
   }
 
   _send(message: any) {
 
-    console.log("mmmm" + JSON.stringify(message))
-    console.log("calling logout api via web socket");
+    
+    
     this.stompClient.send("/app/hello", {}, JSON.stringify(message));
   }
 
   onMessageReceived(message: any) {
 
-    console.log("body:" + message.body)
+    
 
     let ee = JSON.parse(message.body);
-    console.log(ee)
+    
     let e = {
       "message": message.body.message,
       "from": message.body.from,
@@ -238,10 +237,10 @@ export class ChatComponent {
       "time": message.body.time
     }
 
-    console.log("Message Recieved from Server :: " + message.body);
+    
 
 
-    console.log(e)
+    
     return ee;
   }
 

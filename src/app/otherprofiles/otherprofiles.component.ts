@@ -44,7 +44,7 @@ export class OtherprofilesComponent {
       this.id = parseInt(id);
       this.ser.friendStatus(parseInt(idd), this.id).subscribe(d => {
         this.Frd = d;
-        console.log(this.Frd)
+        
         if (d.status == '') {
           this.Frd.status = 'noo';
         }
@@ -92,7 +92,7 @@ export class OtherprofilesComponent {
                         if (JSON.stringify(this.followers[i].id) == JSON.stringify(this.loggedinFolow[j].id)) {
                           this.followers[i].isFollowing = 'yes';
                           this.mutauls = 'yes'
-                          console.log("yessss")
+                          
                         }
                         else {
                           this.followers[i].isFollowing = 'no';

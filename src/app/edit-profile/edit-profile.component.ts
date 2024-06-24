@@ -43,9 +43,9 @@ export class EditProfileComponent implements OnInit {
   onFileChanged(event: any) {
 
 
-    console.log("sfsfdg")
+    
     const selectedfile = event.target.files[0];
-    console.log(selectedfile)
+    
     const filehandle: FileHandler = {
       file: selectedfile,
       url: this.santizer.bypassSecurityTrustUrl(window.URL.createObjectURL(selectedfile))
@@ -60,7 +60,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   prepareFormDataa(e: User): FormData {
-    console.log(e)
+    
     const formdata = new FormData();
     formdata.append('e', new Blob([JSON.stringify(e)], { type: 'application/json' }));
     if (e.files != undefined) {
@@ -77,7 +77,7 @@ export class EditProfileComponent implements OnInit {
     if ((this.tem.bio != this.user.bio || this.tem.bio == this.user.bio) && this.user.files.length != 0) {
 
       const formdat = this.prepareFormDataa(this.user);
-      console.log(this.user);
+      
       this.ser.updateUser(formdat, 1).subscribe(d => {
 
         this.ngxService.stop();

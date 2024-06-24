@@ -26,12 +26,12 @@ export class FollowrsComponent implements OnInit {
   own: string = '';
   id!: number;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private r: Router, private ngxService: NgxUiLoaderService, private dialogRef: MatDialogRef<FollowrsComponent>, private sanitizer: DomSanitizer, private rr: ActivatedRoute, private s: UserserviceService) {
-    // console.log(data[0])
+    // 
     this.followers = data.data;
     this.fo = data.followers;
     this.foo = data.following;
     this.own = data.ownProfile;
-    console.log(this.followers);
+    
     let id = this.s.loggedinUSer()
     //  if(id==null){
     //   alert("Please login to contiue")
@@ -66,10 +66,10 @@ export class FollowrsComponent implements OnInit {
 
     this.ngxService.start();
     this.dialogRef.close();
-    console.log(window.location);
+    
     let ii = this.s.loggedinUSer();
-    console.log("ls:" + this.s.loggedinUSer());
-    console.log(id + "")
+    
+    
     if (id + "" == ii) {
 
       this.r.navigate((['/main/profile']));

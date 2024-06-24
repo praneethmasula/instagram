@@ -180,7 +180,7 @@
             </a>
           </li>
           <li>
-            <a (click)="navvigate('profile')"
+            <a id="ff" [matMenuTriggerFor]="aboveMenu" (click)="navvigate('profile')"
               class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person"
                 viewBox="0 0 16 16">
@@ -191,6 +191,11 @@
             </a>
           </li>
         </ul>
+
+        <mat-menu #aboveMenu="matMenu" yPosition="above">
+          <button mat-menu-item>settings</button>
+          <button mat-menu-item routerLink="/login">Log out?</button>
+        </mat-menu>
 
       </mat-toolbar>
     </div>

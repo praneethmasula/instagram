@@ -1,4 +1,4 @@
-import { Component, OnInit, effect, signal } from '@angular/core';
+import { Component, NgZone, OnInit, effect, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { Post } from 'src/post';
@@ -12,6 +12,7 @@ import { UserserviceService } from '../userservice.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { User } from 'src/user';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-feed',
@@ -27,23 +28,31 @@ export class FeedComponent implements OnInit {
   postLiked: Post[] = [];
   stock: any = {};
   likeChange = effect(() => {
-    console.log("tjsdfif", this.pos);
+    
   })
-  constructor(private rou: ActivatedRoute, private pose: PostserviceService, private spinnerService: NgxSpinnerService, private sanitizer: DomSanitizer, private dialogRef: MatDialogRef<CreatepostComponent>, private ss: UserserviceService, private ngxService: NgxUiLoaderService, private rr: Router, private webSocket: WebSocket) {
+  constructor(private rou: ActivatedRoute, private pose: PostserviceService, private spinnerService: NgxSpinnerService, private sanitizer: DomSanitizer, private dialogRef: MatDialogRef<CreatepostComponent>, private ss: UserserviceService, private ngxService: NgxUiLoaderService, private rr: Router, private webSocket: WebSocket,private zone: NgZone,private _snackBar: MatSnackBar) {
     // this.webSocket = new WebSocket('ws://localhost:8080/stocks');
     // this.webSocket.onmessage = (event) => {
     //   this.stock = JSON.parse(event.data)
-    //   console.log(this.stock)
+    //   
     // };
   }
   ngOnInit(): void {
 
 
     this.id = this.ss.loggedinUSer();
-    // if(this.id==null){
-    //   alert("Please login to contiue")
-    //   this.rr.navigate(['/login'])
-    // }
+    if(this.id==null){
+      const config = new MatSnackBarConfig();
+          config.duration = 2000
+          config.panelClass = ['background-red'];
+          config.verticalPosition = 'top';
+          config.horizontalPosition = 'center';
+          this.zone.run(() => {
+            this._snackBar.open('Please login to continue..', 'x', config,
+            );
+          });
+      this.rr.navigate(['/login'])
+    }
     if (this.id != null) {
       this.pose.getPostsLikedByUSer(this.id).subscribe(d => {
         this.postLiked = d;
@@ -54,13 +63,14 @@ export class FeedComponent implements OnInit {
             this.createImagee(e.user)
 
           }
-          console.log("likedlen:" + this.postLiked.length);
+          
+          
           for (var i = 0; i < this.post.length; i++) {
-            console.log("d=>" + this.post[i].id);
+            
             for (var j = 0; j < this.postLiked.length; j++) {
-              console.log("d1=>" + this.postLiked[j].id);
+              
               if (this.post[i].id == this.postLiked[j].id) {
-                console.log("liked liked")
+                
                 this.post[i].isliked = true;
               }
             }
@@ -79,7 +89,7 @@ export class FeedComponent implements OnInit {
 
           (e: HttpErrorResponse) => {
             alert('please try again later...')
-            console.log(e.error);
+            
 
           });
 
@@ -87,7 +97,7 @@ export class FeedComponent implements OnInit {
         ,
         (e: HttpErrorResponse) => {
           alert('please try again later...')
-          console.log(e.error);
+          
 
         })
 
@@ -96,9 +106,9 @@ export class FeedComponent implements OnInit {
   }
 
   viewProfile(id: number) {
-    console.log("id:dd" + id);
-    console.log("sff:" + this.id)
-    console.log(this.id == id)
+    
+    
+    
     this.ngxService.start();
     if (this.id == id) {
 
@@ -133,7 +143,7 @@ export class FeedComponent implements OnInit {
       return resultInMinutes + 'd'
     }
     return d;
-    console.log(resultInMinutes)
+    
 
   }
 
@@ -211,7 +221,7 @@ export class FeedComponent implements OnInit {
             e.isliked = false
             e.likes = e.likes - 1;
             this.pose.removePostLikes(id, this.id).subscribe(d => {
-              console.log(d);
+              
             })
 
           }
@@ -219,7 +229,7 @@ export class FeedComponent implements OnInit {
             e.isliked = true;
             e.likes = e.likes + 1;
             this.pose.updatePostLikes(id, this.id).subscribe(d => {
-              console.log(d);
+              
             })
           }
 

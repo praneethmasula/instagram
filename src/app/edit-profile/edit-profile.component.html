@@ -1,8 +1,10 @@
 <div class="flex-col justify-center m-9">
   <h2 style="font-weight: 800;">Edit Profile</h2>
-  <div class="flex  bg-zinc-400 p-3 rounded-lg mt-6">
+  <div class="flex gap-3  bg-zinc-400 p-3 rounded-lg mt-6">
     <div class=" aspect-auto" style="width: 100px;">
-      <img [src]="user.files[0].url" alt="..."
+      <img *ngIf="user.files.length>0" [src]="user.files[0].url" alt="..."
+        class="relative inline-block h-20 w-20 !rounded-full  object-cover object-center" />
+        <img *ngIf="user.files.length==0" src="assets/images.jpeg" alt="..."
         class="relative inline-block h-20 w-20 !rounded-full  object-cover object-center" />
     </div>
     <div class="w-full">

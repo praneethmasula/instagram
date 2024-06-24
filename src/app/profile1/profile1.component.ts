@@ -44,7 +44,7 @@ export class Profile1Component {
       //        b.file.id-a.file.id;
       // });
       this.user = this.createImageg(this.user);
-      this.load = 'yes'
+     
       this.ser.getFollowers(this.id).subscribe(d => {
         this.followers = d;
         for (let i = 0; i < this.followers.length; i++) {
@@ -57,7 +57,7 @@ export class Profile1Component {
       },
         (e: HttpErrorResponse) => {
           alert('please try again later...')
-          console.log(e.error);
+          
           // Should print 'The Category Name is taken'
         });
       this.ser.getFollowing(this.id).subscribe(d => {
@@ -66,7 +66,7 @@ export class Profile1Component {
           for (let j = 0; j < this.following.length; j++) {
             if (JSON.stringify(this.followers[i].id) == JSON.stringify(this.following[j].id)) {
               this.followers[i].isFollowing = 'yes';
-              console.log("fredsss")
+              
 
             }
 
@@ -81,29 +81,32 @@ export class Profile1Component {
           this.createImageg(e);
 
         }
+        this.postser.getPostOfOwn(this.id).subscribe(d => {
+          if (d != null) {
+            this.posts = d;
+          
+            for (let p of this.posts) {
+              this.load = 'yes'
+              this.createImage(p);
+            }
+            
+          }
+        },
+          (e: HttpErrorResponse) => {
+            alert('please try again later...')
+            
+            // Should print 'The Category Name is taken'
+          })
 
         this.ngxService.stop();
       },
         (e: HttpErrorResponse) => {
           alert('please try again later...')
-          console.log(e.error);
+          
           // Should print 'The Category Name is taken'
         });
     })
-    this.postser.getPostOfOwn(this.id).subscribe(d => {
-      if (d != null) {
-        this.posts = d;
-        for (let p of this.posts) {
-          this.load = 'yes'
-          this.createImage(p);
-        }
-      }
-    },
-      (e: HttpErrorResponse) => {
-        alert('please try again later...')
-        console.log(e.error);
-        // Should print 'The Category Name is taken'
-      })
+    
   }
   constructor(private ser: UserserviceService, private postser: PostserviceService, private sanitizer: DomSanitizer, private dialog: MatDialog, private zone: NgZone, private ngxService: NgxUiLoaderService, private ro: Router) {
 

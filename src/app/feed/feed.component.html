@@ -3,8 +3,11 @@
     <mat-card class="example-card" style="">
       <mat-card-header>
         <div mat-card-avatar class="h-30 w-30">
-          <img class="relative inline-block h-15 w-20 !rounded-full  object-cover object-center"
+          <img *ngIf="e.user.files.length>0" class="relative inline-block h-15 w-20 !rounded-full  object-cover object-center"
             [src]="e.user.files[0].url">
+            
+   
+            <img *ngIf="e.user.files.length==0" src="/assets/images.jpeg"  class="relative inline-block h-15 w-20 !rounded-full  object-cover object-center" />
         </div>
         <mat-card-title (click)="viewProfile(e.user.id)">{{e.user.userName}}</mat-card-title>
         <mat-card-subtitle>Hyd</mat-card-subtitle>

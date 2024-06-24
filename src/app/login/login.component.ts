@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
   });
 
   Login() {
-    console.log("usss")
+    this.ngxService.start();
+
     if (this.userform.valid && this.userform.get('userName')?.value != null && this.userform.get('userName')?.value) {
 
       Object.assign(this.user, this.userform.value);
@@ -64,14 +65,23 @@ export class LoginComponent implements OnInit {
           config.verticalPosition = 'bottom';
           config.horizontalPosition = 'center';
           this.zone.run(() => {
-            this._snackBar.open('something Went Wrong', 'x', config,
+            this._snackBar.open('Something Went Wrong , Please check you crendentials', 'x', config,
             );
           });
         }
       },
         (e: HttpErrorResponse) => {
-          alert('please try again later...')
-          console.log(e.error);
+          const config = new MatSnackBarConfig();
+          config.duration = 2000
+          config.panelClass = ['background-red'];
+          config.verticalPosition = 'top';
+          config.horizontalPosition = 'center';
+          this.zone.run(() => {
+            this._snackBar.open('Please try again later...', 'x', config,
+            );
+          });
+         
+          
           this.spinnerService.hide();
           this.ngxService.stop();
           // Should print 'The Category Name is taken'
