@@ -54,29 +54,31 @@ export class ChatComponent {
           return <any>new Date(a.time) - <any>new Date(b.time);
         });
         this.messagess.set(this.messgaesss);
-        this.load='yes';
+      
 
-      })
-    }
-
-    if (id != null) {
-      this.loggedUSer = id;
-
-      sss.getUserbyId(parseInt(id)).subscribe(d => {
-        
-        this.user = d;
-        this.user = this.createImageg(this.user);
-        if (idd != null) {
-          this.toUSer = idd
-          sss.getUserbyId(parseInt(idd)).subscribe(d => {
-            this.chatUSer = d;
-            this.chatUSer = this.createImageg(this.chatUSer);
+        if (id != null) {
+          this.loggedUSer = id;
+    
+          sss.getUserbyId(parseInt(id)).subscribe(d => {
             
+            this.user = d;
+            this.user = this.createImageg(this.user);
+            if (idd != null) {
+              this.toUSer = idd
+              sss.getUserbyId(parseInt(idd)).subscribe(d => {
+                this.chatUSer = d;
+                this.chatUSer = this.createImageg(this.chatUSer);
+                this.load='yes';
+
+              })
+            }
+    
           })
         }
 
       })
     }
+
 
 
 
