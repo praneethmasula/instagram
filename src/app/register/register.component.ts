@@ -87,7 +87,6 @@ export class RegisterComponent {
           config.duration = 3000
           config.verticalPosition = 'top';
           config.horizontalPosition='right'
-         
           this.zone.run(() => {
             this._snackBar.open('Something Went Wrong', 'x', config,
             );

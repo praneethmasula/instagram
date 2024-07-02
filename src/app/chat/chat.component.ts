@@ -51,7 +51,7 @@ export class ChatComponent {
       chstser.getChatById(id, idd).subscribe(d => {
         this.messgaesss = d;
         this.messgaesss.sort((a: any, b: any) => {
-          return <any>new Date(b.time) - <any>new Date(a.time);
+          return <any>new Date(a.time) - <any>new Date(b.time);
         });
         this.messagess.set(this.messgaesss);
         this.load='yes';
@@ -185,12 +185,13 @@ export class ChatComponent {
         
         _this.messgaesss.push(ee)
         _this.messgaesss.sort((a: any, b: any) => {
-          return <any>new Date(b.time) - <any>new Date(a.time);
+          return <any>new Date(a.time) - <any>new Date(b.time);
         });
 
         
         _this.messagess.set(_this.messgaesss)
         
+      
         
         for (let f of _this.messgaesss) {
           
